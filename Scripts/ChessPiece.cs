@@ -70,13 +70,16 @@ public abstract class ChessPiece : MonoBehaviour
     {
         if (isThreat)
         {
+            if (isWhite) ChessManager.instance.aliveWhite--;
+            else ChessManager.instance.aliveBlack--;
+
             ChessManager.instance.selectedPiece.transform.position = transform.position;
-            ChessManager.instance.turnChange();
+            ChessManager.instance.trunChange();
             ChessManager.instance.SelectedPieceClear();
-            Destroy(this.gameObject);
-            return;
+
+            Destroy(this.gameObject); return;
         }
-        if (isWhite != (ChessManager.instance.turn % 2 == 0)) return;
+        if (isWhite != (ChessManager.instance.trun % 2 == 0)) return;
         if (isSelect) ChessManager.instance.SelectedPieceClear();
         else Select();
     }
