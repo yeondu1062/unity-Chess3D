@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 using TMPro;
 
-public class TurnTextUi : MonoBehaviour
+public class TrunTextUi : MonoBehaviour
 {
     public TextMeshProUGUI trunText;
     public float typingSpeed = 0.1f;

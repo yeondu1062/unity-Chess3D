@@ -13,7 +13,7 @@ public class MarkObjectClick : MonoBehaviour
         }
 
         ChessManager.instance.selectedPiece.transform.position = transform.position;
-        ChessManager.instance.turnChange();
+        ChessManager.instance.trunChange();
         ChessManager.instance.SelectedPieceClear();
     }
 }

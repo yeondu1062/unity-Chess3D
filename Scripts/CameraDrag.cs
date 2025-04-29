@@ -2,12 +2,12 @@ using UnityEngine;
 
 public class CameraDrag : MonoBehaviour
 {
-    public int xSpeed = 800;
-    public int ySpeed = 800;
-    public int zoomSpeed = 20;
+    public static float xSpeed = 800f;
+    public static float ySpeed = 800f;
+    public static float zoomSpeed = 20f;
 
     public int angleMin = -20;
-    public int angleMax = 80;
+    public int angleMax = 90;
     public int distMin = 2;
     public int distMax = 40;
 
@@ -17,7 +17,7 @@ public class CameraDrag : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0) && !UiManager.IsDraggingUI)
         {
             x += Input.GetAxis("Mouse X") * xSpeed * Time.deltaTime;
             y -= Input.GetAxis("Mouse Y") * ySpeed * Time.deltaTime;

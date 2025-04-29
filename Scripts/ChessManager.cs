@@ -30,7 +30,7 @@ public class ChessManager : MonoBehaviour
 
     public int aliveWhite = 16;
     public int aliveBlack = 16;
-    public int turn = 0;
+    public int trun = 0;
 
     public static ChessPiece GetPieceAtPos(float x, float z)
     {
@@ -41,10 +41,11 @@ public class ChessManager : MonoBehaviour
         return null;
     }
 
-    public void turnChange()
+    public void trunChange()
     {
         FindFirstObjectByType<CameraDrag>().x += 180;
-        FindFirstObjectByType<TurnTextUi>().Next(++turn);
+        FindFirstObjectByType<TrunTextUi>().Next(++trun);
+        FindFirstObjectByType<ScoreTextUi>().TextUpdate();
 
         if (selectedPiece.isWhite) Camera.main.backgroundColor = new Color(176f/255, 176f/255, 176f/255);
         else Camera.main.backgroundColor = new Color(245f/255, 230f/255, 204f/255);

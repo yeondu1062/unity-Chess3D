@@ -97,7 +97,7 @@ public class NetworkManager : MonoBehaviour
             await Task.Delay(10);
         }
 
-        if (servers.Count > 0) servers.RemoveAt(0); //Remove local IP
+        //if (servers.Count > 0) servers.RemoveAt(0); //Remove local IP
         return servers;
     }
 
