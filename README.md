@@ -3,6 +3,7 @@
 
 ## 이미지
 https://github.com/user-attachments/assets/55b1121b-a44a-49ac-b760-de6eb18353ae
+https://github.com/user-attachments/assets/ff4fe4ab-d4e6-436e-9ef1-784f71ae6baa
 
 ## 라이선스
 [MIT](./LICENSE) 라이선스를 사용하고 있습니다.
