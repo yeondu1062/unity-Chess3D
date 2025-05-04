@@ -29,6 +29,7 @@ public class UiManager : MonoBehaviour
         dimension.onClick.AddListener(DimensionHandle);
         exitGame.onClick.AddListener(ExitGameHandle);
 
+        lanDropdown.onValueChanged.AddListener(LanIpChangedHandle);
         dragSpeedSlider.onValueChanged.AddListener(DragSpeedChangedHandle);
         zoomSpeedSlider.onValueChanged.AddListener(ZoomSpeedChangedHandle);
 
@@ -44,11 +45,15 @@ public class UiManager : MonoBehaviour
 
         if (isActive) return;
 
+        lanDropdown.ClearOptions();
+        lanDropdown.AddOptions(new List<string> { "Loading data..." });
+
         List<IPEndPoint> servers = await NetworkManager.instance.FindServers();
         List<string> options = new List<string>();
 
         foreach (var server in servers) options.Add(server.Address.ToString());
 
+        lanDropdown.Hide();
         lanDropdown.ClearOptions();
         lanDropdown.AddOptions(options);
     }
@@ -70,6 +75,11 @@ public class UiManager : MonoBehaviour
     private void ExitGameHandle()
     {
         Application.Quit();
+    }
+
+    private void LanIpChangedHandle(int index)
+    {
+        NetworkManager.instance.JoinServer(lanDropdown.options[index].text);
     }
 
     private void DragSpeedChangedHandle(float value)
