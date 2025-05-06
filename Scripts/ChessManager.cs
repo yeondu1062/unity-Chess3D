@@ -28,9 +28,10 @@ public class ChessManager : MonoBehaviour
     public List<GameObject> markers = new List<GameObject>();
     public List<GameObject> threats = new List<GameObject>();
 
-    public int aliveWhite = 16;
-    public int aliveBlack = 16;
-    public int trun = 0;
+    public int playerType = 0;
+    public int aliveWhite;
+    public int aliveBlack;
+    public int trun;
 
     public static ChessPiece GetPieceAtPos(float x, float z)
     {
@@ -43,11 +44,11 @@ public class ChessManager : MonoBehaviour
 
     public void trunChange()
     {
-        FindFirstObjectByType<CameraDrag>().x += 180;
         FindFirstObjectByType<TrunTextUi>().Next(++trun);
         FindFirstObjectByType<ScoreTextUi>().TextUpdate();
+        if (playerType == 0) FindFirstObjectByType<CameraDrag>().x += 180;
 
-        if (selectedPiece.isWhite) Camera.main.backgroundColor = new Color(176f/255, 176f/255, 176f/255);
+        if (trun % 2 != 0) Camera.main.backgroundColor = new Color(176f/255, 176f/255, 176f/255);
         else Camera.main.backgroundColor = new Color(245f/255, 230f/255, 204f/255);
     }
 
@@ -115,6 +116,22 @@ public class ChessManager : MonoBehaviour
         ChessPiece.whitePieceMaterial = whiteMaterial;
         ChessPiece.selectPieceMaterial = selectMaterial;
 
+        InitGame();
+    }
+
+    public void InitGame()
+    {
+        aliveWhite = 16;
+        aliveBlack = 16;
+        trun = 0;
+
+        FindFirstObjectByType<TrunTextUi>().Next(trun);
+        FindFirstObjectByType<ScoreTextUi>().TextUpdate();
+
+        foreach (ChessPiece piece in FindObjectsByType<ChessPiece>(FindObjectsSortMode.None)) Destroy(piece.gameObject);
+
+        Camera.main.backgroundColor = new Color(245f / 255, 230f / 255, 204f / 255);
+
         King.Spawn(0.5f, 3.5f, 0); King.Spawn(0.5f, -3.5f, 1);
         Queen.Spawn(-0.5f, 3.5f, 0); Queen.Spawn(-0.5f, -3.5f, 1);
         Bishop.Spawn(1.5f, 3.5f, 0); Bishop.Spawn(1.5f, -3.5f, 1); Bishop.Spawn(-1.5f, 3.5f, 0); Bishop.Spawn(-1.5f, -3.5f, 1);
@@ -124,5 +141,7 @@ public class ChessManager : MonoBehaviour
         Pawn.Spawn(2.5f, 2.5f, 0); Pawn.Spawn(2.5f, -2.5f, 1); Pawn.Spawn(-2.5f, 2.5f, 0); Pawn.Spawn(-2.5f, -2.5f, 1);
         Pawn.Spawn(1.5f, 2.5f, 0); Pawn.Spawn(1.5f, -2.5f, 1); Pawn.Spawn(-1.5f, 2.5f, 0); Pawn.Spawn(-1.5f, -2.5f, 1);
         Pawn.Spawn(0.5f, 2.5f, 0); Pawn.Spawn(0.5f, -2.5f, 1); Pawn.Spawn(-0.5f, 2.5f, 0); Pawn.Spawn(-0.5f, -2.5f, 1);
+
+        ClearMarker();
     }
 }
