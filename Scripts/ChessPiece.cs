@@ -73,13 +73,32 @@ public abstract class ChessPiece : MonoBehaviour
             if (isWhite) ChessManager.instance.aliveWhite--;
             else ChessManager.instance.aliveBlack--;
 
-            ChessManager.instance.selectedPiece.transform.position = transform.position;
+            Transform selectedPieceT = ChessManager.instance.selectedPiece.transform;
+
+            if (ChessManager.instance.playerType == 1)
+            {
+                NetworkManager.instance.MoveDataToClient(
+                    selectedPieceT.position.x, selectedPieceT.position.z,
+                    transform.position.x, transform.position.z
+                );
+            }
+            else if (ChessManager.instance.playerType == 2)
+            {
+                NetworkManager.instance.MoveDataToServer(
+                    selectedPieceT.position.x, selectedPieceT.position.z,
+                    transform.position.x, transform.position.z
+                );
+            }
+
+            selectedPieceT.position = transform.position;
             ChessManager.instance.trunChange();
             ChessManager.instance.SelectedPieceClear();
 
             Destroy(this.gameObject); return;
         }
         if (isWhite != (ChessManager.instance.trun % 2 == 0)) return;
+        if (isWhite && ChessManager.instance.playerType == 2) return;
+        if (!isWhite && ChessManager.instance.playerType == 1) return;
         if (isSelect) ChessManager.instance.SelectedPieceClear();
         else Select();
     }
