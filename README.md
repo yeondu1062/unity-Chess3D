@@ -9,5 +9,10 @@ https://github.com/user-attachments/assets/ff4fe4ab-d4e6-436e-9ef1-784f71ae6baa
 ## 라이선스
 [MIT](./LICENSE) 라이선스를 사용하고 있습니다.
 
-<a href="https://sketchfab.com/3d-models/cartoon-chess-set-daae6882d0354d6389491e24f887b649/" title="체스 모델링">체스 모델링 CYX1122 - Sketchfab</a>  
-<a href="https://www.flaticon.com/kr/free-icons/" title="체스 아이콘">게임 아이콘 Freepik - Flaticon</a>
+체스 모델링 CYX1122 <a href="https://sketchfab.com/3d-models/cartoon-chess-set-daae6882d0354d6389491e24f887b649/">Sketchfab</a>  
+폰트 학교안심 <a href="https://copyright.keris.or.kr/wft/fntDwnldView">keris</a>  
+게임 아이콘 Freepik <a href="https://www.flaticon.com/kr/free-icons/">Flaticon</a>  
+설정 버튼 Yaicon  
+나가기 버튼 Cavid Ali  
+멀티 버튼 Redempticon  
+2D버튼 Pixel Perfect
