@@ -1,5 +1,6 @@
 # unity-ChessLAN_3D
-유니티로 만든 LAN멀티 기능이 포함된 3D체스 게임입니다.
+유니티로 만든 LAN멀티 기능이 포함된 3D체스 게임입니다.  
+https://yeondu1062.itch.io/chesslan3d
 
 ## 이미지
 https://github.com/user-attachments/assets/55b1121b-a44a-49ac-b760-de6eb18353ae
